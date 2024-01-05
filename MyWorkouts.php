@@ -24,6 +24,10 @@
 <body>
 
 <?php
+global $conn;
+require_once "../connect.php";
+session_start();
+$userID = $_SESSION["userID"];
 
 $workout="";
 //if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -45,9 +49,9 @@ $workout="";
     }else if(isset($_POST['Group'])){
 //        echo "<h1>jemi ok</h1>";
         $workout = "Group";
-    }else if(isset($_POST['Flexibility/mobility'])){
+    }else if(isset($_POST['Flexibility'])){
 //        echo "<h1>jemi ok</h1>";
-        $workout = "Flexibility/mobility";
+        $workout = "Flexibility";
 
     }else if(isset($_POST['Balance'])){
 //        echo "<h1>jemi ok</h1>";
@@ -58,15 +62,21 @@ $workout="";
         $workout = "Stability";
     }
 //}
+//echo "workout: ".$workout;
 
 //        session_start();
 //        $userID = $_SESSION["userID"];
-$userID = "1";
-global $conn;
-require_once "../connect.php";
+//$userID = "1";
 
-$query_delete = "delete from usersworkouts where userID='".$userID."' and workout='".$workout."'";
+
+$query_delete = "delete from `users`.`usersworkouts` where userID='".$userID."' and workout='".$workout."'";
 $result_check = mysqli_query($conn,$query_delete);
+
+//if (!$result_check) {
+//    echo "Error deleting workout: " . mysqli_error($conn);
+//} else {
+//    echo "Workout deleted successfully!";
+//}
 
 ?>
 
@@ -89,15 +99,20 @@ $result_check = mysqli_query($conn,$query_delete);
                 </div>
             </div>
 
+            <div class="navbar"><a style="text-decoration:none" href="./MyWorkouts.php" class="about">My workouts</a></div>
 
             <div class="navbar"><a style="text-decoration:none" href="../about/about.html" class="about">About</a></div>
             <div class="navbar"><a style="text-decoration:none" href="../contact/contact.html" class="contact">Contact</a></div>
         </div>
 
         <div class="navright">
-            <div class="login"><a style="text-decoration:none" href="../login/login.html" class ="login">Login</a></div>
-            <div class=navbar><a style="text-decoration:none" href="../login/signup.html" class="signup">Sign up</a></div>
+            <div class=navbar><a style="text-decoration:none" href="../login/logout.php" class="signup">Sign out</a></div>
         </div>
+
+<!--        <div class="navright">-->
+<!--            <div class="login"><a style="text-decoration:none" href="../login/login.html" class ="login">Login</a></div>-->
+<!--            <div class=navbar><a style="text-decoration:none" href="../login/signup.html" class="signup">Sign up</a></div>-->
+<!--        </div>-->
     </div>
 </div>
 <div class="container">
@@ -106,7 +121,7 @@ $result_check = mysqli_query($conn,$query_delete);
     <form method="post" action="#" id="workouts">
 
         <?php
-        $query_check = "select workout from usersworkouts where userID = '".$userID."'";
+        $query_check = "select workout from `users`.`usersworkouts` where userID = '".$userID."'";
         $result_check = mysqli_query($conn, $query_check);
 //        $notMyWorkouts = [];
 //        $i=0;
@@ -115,18 +130,26 @@ $result_check = mysqli_query($conn,$query_delete);
 //            $notMyWorkouts[$i++] = $row_data["workout"];
             $workoutName = $row_data["workout"];
 
-            $query_check = "select photo from workouts where workout = '".$workoutName."'";
+//            $query_check = "select photo from workouts where workout = '".$workoutName."'";
+            $query_check = "select photo,exercises from `users`.`workouts` where workout = '".$workoutName."'";
             $result_check1 = mysqli_query($conn, $query_check);
             $next_row_data = mysqli_fetch_assoc($result_check1);
 
             $photoURL = $next_row_data["photo"];
-
-            $query_check = "select exercises from exercises where workout='".$workoutName."'" ;
-            $result_check1 = mysqli_query($conn, $query_check);
-            $next_row_data = mysqli_fetch_assoc($result_check1);
-
             $exercises = $next_row_data["exercises"];
             $array_exercises = explode(",","$exercises");
+
+//            $result_check1 = mysqli_query($conn, $query_check);
+//            $next_row_data = mysqli_fetch_assoc($result_check1);
+//
+//            $photoURL = $next_row_data["photo"];
+
+//            $query_check = "select exercises from exercises where workout='".$workoutName."'" ;
+//            $result_check1 = mysqli_query($conn, $query_check);
+//            $next_row_data = mysqli_fetch_assoc($result_check1);
+//
+//            $exercises = $next_row_data["exercises"];
+//            $array_exercises = explode(",","$exercises");
 
 
             echo "<script>

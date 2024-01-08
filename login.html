@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<body>
+    <div class="container">
+        <br><h1>Login</h1>
+        <div class="contact-box">
+            <div class="contact-left">
+                <form method="post" id="loginForm">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" id="email" name="email" placeholder="name.username@example.com">
+                            <div class="form-text">
+                                <span id="emailHelp" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Password</label>
+                            <input type="password" id="password" name="Password" placeholder="Password">
+                            <div class="form-text">
+                                <span id="passwordHelp" class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" id="submit" name="submit" class="btn btn-primary" >SEND</button>
+                </form>
+                <br>
+                <h3>Don't have an account? <br> <a href = "signup.html">Sign Up Here.</a></h3>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="copyright">
+            <span class="left">Copyright &copy; Polytechinc University of Tirana 2023. All rights reserved.</span>
+            <span class="right">
+            <a href="#">Terms &amp; Conditions</a>
+            <a href="#">Privacy Policy</a>
+            </span>
+        </div>
+    </footer>
+
+    <script>
+
+        $(document).ready(function () {
+            $("#loginForm").submit(function (e) {
+                e.preventDefault(); // Prevent the form from submitting
+                login(); // Call your login function
+            });
+
+        function login() {
+            var error = 0;
+            var message = "";
+            var email = $("#email").val();
+            var password = $("#password").val();
+
+            // console.log("Email "+email+" Pass: "+password);
+
+            var passwordRegex = /^[a-zA-Z0-9_-]{4,}$/;
+
+            // Validimi i email nese eshte bosh
+            if (isEmpty(email)) {
+                error++;
+                message = "Email is required";
+                $('#emailHelp').text(message);
+            } else {
+                $('#emailHelp').text("");
+            }
+
+            // validimi i passwordit
+            if (!passwordRegex.test(password)) {
+                error++;
+                message = "Incorrect password";
+                $('#passwordHelp').text(message);
+            } else {
+                $('#passwordHelp').text("");
+            }
+
+            /////////////////
+            var data = new FormData();
+            data.append("action", "login")
+            data.append("email", email)
+            data.append("password", password)
+
+            if (error > 0) {
+                Swal.fire('Error', 'Please fill all required fields', 'error')
+                return false;
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "login_api.php",
+                    // dataType: 'json',
+                    async: false,
+                    cache: false,
+                    processData: false,
+                    data: data,
+                    contentType: false,
+                    success: function (response, status, call) {
+                        response = JSON.parse(response);
+
+                        if (call.status == 200) {
+                            window.location.href = "../index.html";
+                        } else {
+                            $("#" + response.tag).text(response.message);
+                            Swal.fire('Error', response.message, 'error')
+                        }
+                    },
+                });
+            }
+        }
+
+        });
+
+        function isEmpty(val) {
+            return (val == "" || val === undefined || val == null || val === false || val.length <= 0) ? true : false;
+        }
+
+    </script>
+
+</body>
+</html>

@@ -95,14 +95,14 @@ $result_check = mysqli_query($conn,$query_delete);
                 <div class="dropdown-content">
                     <a style="text-decoration:none" href="features1.html">General Tips</a>
                     <a style="text-decoration:none" href="features2.html">Choose Workout</a>
-                    <a style="text-decoration:none" href="features3.html">View Progress</a>
+                    <a style="text-decoration:none" href="features3.php">View Progress</a>
                 </div>
             </div>
 
-            <div class="navbar"><a style="text-decoration:none" href="./MyWorkouts.php" class="about">My workouts</a></div>
+            <div class="navbar"><a style="text-decoration:none" href="./MyWorkouts.php" class="myWorkouts">My workouts</a></div>
 
             <div class="navbar"><a style="text-decoration:none" href="../about/about.html" class="about">About</a></div>
-            <div class="navbar"><a style="text-decoration:none" href="../contact/contact.html" class="contact">Contact</a></div>
+            <div class="navbar"><a style="text-decoration:none" href="../contact/contact.php" class="contact">Contact</a></div>
         </div>
 
         <div class="navright">

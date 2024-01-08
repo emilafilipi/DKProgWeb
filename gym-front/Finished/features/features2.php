@@ -27,7 +27,7 @@
 
 <?php
 
-$workout="";
+//$workout="";
 //if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST['Strength'])){
 //    echo "<h1>jemi ok</h1>";
@@ -61,13 +61,15 @@ $workout="";
     }
 //}
 
-//        session_start();
-//        $userID = $_SESSION["userID"];
-$userID = "1";
+
+//$userID = "1";
 global $conn;
 require_once "../connect.php";
 
-$query_insert = "insert into usersworkouts(userID, workout) values('".$userID."','".$workout."')";
+session_start();
+$userID = $_SESSION["userID"];
+
+$query_insert = "insert into `users`.`usersworkouts` (userID, workout) values('".$userID."','".$workout."')";
 $result_check = mysqli_query($conn, $query_insert);
 
 ?>
@@ -88,11 +90,12 @@ $result_check = mysqli_query($conn, $query_insert);
                 <div class="dropdown-content">
                     <a style="text-decoration:none" href="features1.html">General Tips</a>
                     <a style="text-decoration:none" href="features2.php">Choose Workout</a>
-                    <a style="text-decoration:none" href="features3.php">View Progress</a>
+                    <a style="text-decoration:none" href="features3.html">View Progress</a>
                 </div>
             </div>
 
-            <div class="navbar"><a style="text-decoration:none" href="MyWorkouts.php" class="about">My Workouts</a></div>
+            <div class="navbar"><a style="text-decoration:none" href="features/MyWorkouts.php" class="about">My workouts</a></div>
+
             <div class="navbar"><a style="text-decoration:none" href="../about/about.html" class="about">About</a></div>
             <div class="navbar"><a style="text-decoration:none" href="../contact/contact.html" class="contact">Contact</a></div>
         </div>
@@ -112,7 +115,7 @@ $result_check = mysqli_query($conn, $query_insert);
 
     <form method="post" action="#" id="workouts">
         <?php
-        $query_check = "select * from usersworkouts where userID != '".$userID."'";
+        $query_check = "select * from `users`.`usersworkouts` where userID != '".$userID."'";
         $result_check = mysqli_query($conn, $query_check);
         $notMyWorkouts = [];
         $i=0;
@@ -133,7 +136,7 @@ $result_check = mysqli_query($conn, $query_insert);
             return 0;
         }
 
-        $query_check = "select * from workouts";
+        $query_check = "select * from `users`.`workouts`";
         $result_check = mysqli_query($conn, $query_check);
 
         while($row_data = mysqli_fetch_assoc($result_check)) {
@@ -148,48 +151,48 @@ $result_check = mysqli_query($conn, $query_insert);
 
 
             echo "<script>
-function printWorkouts(){
-    var form = document.getElementById('workouts');
-var row = document.createElement('div');
-row.setAttribute('class','row');
-var col1 = document.createElement('div');
-col1.setAttribute('class','col1');
-var img = document.createElement('img');
-img.setAttribute('src','$photoURL');
-col1.appendChild(img);
-var col2= document.createElement('div');
-col2.setAttribute('class','col2');
-var br = document.createElement('br');
-var h4 = document.createElement('h4');
-h4.appendChild(document.createTextNode('$workoutName'));
-var p = document.createElement('p');
-var pText = document.createTextNode('$description');
-p.appendChild(pText);
-var br1 = document.createElement('br');
-var br2 = document.createElement('br');
-var button = document.createElement('button');
-button.appendChild(document.createTextNode('Choose workout'));
-button.setAttribute('class','button');
-button.setAttribute('name','$workoutName');
-if($isNotMyWorkout==0){  //pra nqs eshte my workout (nuk kthen 1)
-    
-    button.setAttribute('disabled','disabled');
-    button.setAttribute('style','background-color: gray');
-}
-p.appendChild(br1);
-p.appendChild(br2);
-p.appendChild(button);
-col2.appendChild(br);
-col2.appendChild(h4);
-col2.appendChild(p);
-
-row.appendChild(col1);
-row.appendChild(col2);
-
-form.appendChild(row);
-}
-
-window.addEventListener('load',printWorkouts,false);
+//function printWorkouts(){
+//    var form = document.getElementById('workouts');
+//var row = document.createElement('div');
+//row.setAttribute('class','row');
+//var col1 = document.createElement('div');
+//col1.setAttribute('class','col1');
+//var img = document.createElement('img');
+//img.setAttribute('src','$photoURL');
+//col1.appendChild(img);
+//var col2= document.createElement('div');
+//col2.setAttribute('class','col2');
+//var br = document.createElement('br');
+//var h4 = document.createElement('h4');
+//h4.appendChild(document.createTextNode('$workoutName'));
+//var p = document.createElement('p');
+//var pText = document.createTextNode('$description');
+//p.appendChild(pText);
+//var br1 = document.createElement('br');
+//var br2 = document.createElement('br');
+//var button = document.createElement('button');
+//button.appendChild(document.createTextNode('Choose workout'));
+//button.setAttribute('class','button');
+//button.setAttribute('name','$workoutName');
+//if($isNotMyWorkout==0){  //pra nqs eshte my workout (nuk kthen 1)
+//    
+//    button.setAttribute('disabled','disabled');
+//    button.setAttribute('style','background-color: gray');
+//}
+//p.appendChild(br1);
+//p.appendChild(br2);
+//p.appendChild(button);
+//col2.appendChild(br);
+//col2.appendChild(h4);
+//col2.appendChild(p);
+//
+//row.appendChild(col1);
+//row.appendChild(col2);
+//
+//form.appendChild(row);
+//}
+//
+//window.addEventListener('load',printWorkouts,false);
 </script>";
 
         }

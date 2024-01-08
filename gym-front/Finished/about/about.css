@@ -107,15 +107,6 @@ body{
 .header .features-btn:hover{
 	color: white;
 }
-.header .myWorkouts{
-    color: rgba(243, 235, 235, 0.5);
-    padding: 20px 35px 20px 5px;
-    transition: all 1s;
-}
-.header .myWorkouts:hover{
-    transform: scale(1.1);
-    color: white;
-}
 
 .header .about{
     color: rgb(243, 235, 235);

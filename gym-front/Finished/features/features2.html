@@ -4,6 +4,8 @@
     <title>Features2</title>
     <link rel = "stylesheet" type = "text/css" href = "features.css" />
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         .container img{
             width: 250px;
@@ -35,22 +37,23 @@
                     <div class="dropdown-content">
                         <a style="text-decoration:none" href="features1.html">General Tips</a>
                         <a style="text-decoration:none" href="features2.html">Choose Workout</a>
-                        <a style="text-decoration:none" href="features3.html">View Progress</a>
+                        <a style="text-decoration:none" href="features3.php">View Progress</a>
                     </div> 
                 </div>
-                
+
+                <div class="navbar"><a style="text-decoration:none" href="./MyWorkouts.php" class="about">My workouts</a></div>
 
                 <div class="navbar"><a style="text-decoration:none" href="../about/about.html" class="about">About</a></div> 
                 <div class="navbar"><a style="text-decoration:none" href="../contact/contact.html" class="contact">Contact</a></div>    
             </div>
             
             <div class="navright">
-                <div class="login"><a style="text-decoration:none" href="../login/login.html" class ="login">Login</a></div>
-                <div class=navbar><a style="text-decoration:none" href="../login/signup.html" class="signup">Sign up</a></div>    
+                <div class=navbar><a style="text-decoration:none" href="../login/logout.php" class="signup">Sign out</a></div>
             </div>
         </div>
     </div>
     <div class="container">
+<!--        <form method="post">-->
         <h1>Choose Workout</h1>
         <h2>Every workout session is provided by a highly skilled and experienced instructor. Choose the workout that fits you best.</h2>
         <div class = "row">
@@ -63,7 +66,7 @@
                 <p>Strength training or resistance training involves the performance of physical exercises that are designed to improve 
                     strength and endurance. It is often associated with the lifting of weights.
                     It can also incorporate a variety of training techniques such as bodyweight exercises, isometrics, and plyometrics.
-                    <br><br><a href="/Finished/login.html"><button class="button" >Choose workout.</button></a>
+                    <br><br><button class="button" id="Strength training" value="Strength">Choose workout.</button>
                 </p>
             </div>
         </div>
@@ -77,8 +80,8 @@
                 <p>Cardio is short for cardiovascular and refers to workouts and exercises that challenge and develop your heart, lungs, 
                     and circulatory system. Cardiovascular workouts are very good for your health, and most people tend to do them to 
                     burn fat and lose weight. So, if you want to get leaner and fitter, cardio is the workout for you. There are a 
-                    couple of different cardio approaches to consider, including:
-                    <br><br><a href="/Finished/login.html"><button class="button" >Choose workout.</button></a>
+                    couple of different cardio approaches to consider.
+                    <br><br><button class="button" id="Cardio" value="Cardio">Choose workout.</button>
                 </p>
             </div>
         </div>
@@ -92,7 +95,7 @@
                 <p>Low-Intensity Steady State cardio, this type of workout is long, slow, and relatively easy.
                     Examples include brisk walking and jogging, distance cycling, swimming, and doing non-stop cardio on a machine, 
                     such as an elliptical, exercise bike, treadmill, or rower.
-                    <br><br><a href="/Finished/login.html"><button class="button" >Choose workout.</button></a>
+                    <br><br><button class="button" id="LISS" value="LISS">Choose workout.</button>
                 </p>
             </div>
         </div>
@@ -106,7 +109,7 @@
                 <p>High-Intensity Interval Training, HIIT involves short periods of intense cardio alternated with low-intensity rests.
                     For example, cycle as fast as you can for 30 seconds, pedal slowly for 90 seconds, and repeat ten times.
                     HIIT workouts are shorter but more demanding than LISS workouts.
-                    <br><br><a href="/Finished/login.html"><button class="button" >Choose workout.</button></a>
+                    <br><br><button class="button" id="HIIT" value="HIIT">Choose workout.</button>
                 </p>
             </div>
         </div>
@@ -119,7 +122,7 @@
                 <h4>Group exercise classes</h4>
                 <p>If you like to work with other people, group exercise classes will probably appeal to you.
                     There are many different options, including step aerobics, spinning, circuits, and dance-based classes like Zumba.
-                    <br><br><a href="/Finished/login.html"><button class="button" >Choose workout.</button></a>
+                    <br><br><button class="button" id="Group exercise classes" value="Group">Choose workout.</button>
                 </p>
             </div>
         </div>
@@ -137,7 +140,7 @@
                     Walking tall and moving smoothly will make you look and feel so much younger.
                     Good workouts for better flexibility and mobility include:
                     Stretching, Yoga, Pilates, Martial arts, Gymnastics, Calisthenics
-                    <br><br><a href="/Finished/login.html"><button class="button" >Choose workout.</button></a>
+                    <br><br><button class="button" id="Fexibility mobility" value="Fexibility">Choose workout.</button>
                 </p>
             </div>
         </div>
@@ -154,7 +157,7 @@
                     Balance tends to degrade with age and, combined with a loss of strength and mobility, leads to an increased risk of suffering falls.
                     While better balance won’t have a huge impact on how you look, it could enhance your workout performance, so you get better results.
                     Also, improving and preserving your balance will help maintain your quality of life as you age.
-                    <br><br><a href="/Finished/login.html"><button class="button" >Choose workout.</button></a>
+                    <br><br><button class="button" id="Balance training" value="Balance">Choose workout.</button>
                 </p>
             </div>
         </div>
@@ -170,10 +173,11 @@
                     For example, you could balance on one leg and stop yourself from falling over by shifting your weight every time you wobble.
                     In contrast, stability is your ability to use your muscles to hold your limbs in a certain position.
                     So, while standing on one leg to develop your balance, your muscles contract to steady your supporting knee and hip, eliminating unwanted movement.
-                    <br><br><a href="/Finished/login.html"><button class="button" >Choose workout.</button></a>
+                    <br><br><button class="button" id="Stability training" value="Stability">Choose workout.</button>
                 </p>
             </div>
         </div>
+<!--        </form>-->
     </div>
 
     <div class="footer">
@@ -188,4 +192,36 @@
         </footer>   
     </div>
 </body>
+<script>
+
+    $(document).ready(function () {
+        $('.button').on('click', function () {      //button eshte class
+            var buttonValue = $(this).val();
+            insert(buttonValue);
+        });
+    });
+
+    function insert(buttonValue) {
+        $.ajax({
+            type: "POST",
+            url: "insert_workout.php",
+            data: { buttonValue: buttonValue },
+            success: function (response, status, call) {
+                console.log(response);
+                response = JSON.parse(response);
+
+                if (call.status == 201) {
+                    // window.location.href = "features2.html";
+                } else {
+                    Swal.fire('Error', response.message, 'error');
+                }
+            },
+            error: function () {
+                Swal.fire('Error', 'An error occurred during the AJAX request', 'error');
+            }
+        });
+    }
+
+
+</script>
 </html>

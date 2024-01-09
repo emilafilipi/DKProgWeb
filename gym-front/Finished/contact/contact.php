@@ -8,6 +8,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
     <script src="script.js"></script>
 <body>
+<?php
+global $conn;
+require_once "../connect.php";
+
+session_start();
+$userID = $_SESSION["userID"];
+
+
+if (!empty($_POST)) {
+
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $surname = mysqli_real_escape_string($conn, $_POST['username']);
+    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $service = mysqli_real_escape_string($conn, $_POST['service']);
+    $message = mysqli_real_escape_string($conn,$_POST['message']);
+
+    if (empty($name)) {
+        $errors[] = 'Name is empty';
+    }
+
+    if(empty($surname)){
+        $errors[] = 'Surname is empty';
+    }
+
+    if (empty($email)) {
+        $errors[] = 'Email is empty';
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = 'Email is invalid';
+    }
+
+    if (empty($message)) {
+        $errors[] = 'Message is empty';
+    }
+
+    $query_insert = "INSERT INTO `users`.`contactus`
+                     set userID = '" . $userID . "',
+                     name    = '" . $name . "',
+                     username    = '" . $surname . "',
+                     phone   = '" . $phone . "',
+                     email    = '" . $email . "',
+                     service = '" . $service . "',
+                     message = '" . $message . "'";
+
+    $query_result = mysqli_query($conn, $query_insert);
+
+}
+?>
     <div class="header" id="header">
         <div class="navbar">
             <div class="navleft">
@@ -67,7 +115,7 @@
 
                     <div class="input-row">
                         <div class="input-group">
-                            <label>Service (optional)<br></label>
+                            <label>Service<br></label>
                             <input name="service" type="text">
                         </div>
                     </div>
@@ -82,7 +130,7 @@
                 <table>
                     <tr>
                         <td>Email</td>
-                        <td>gymfitness@gmail.com</td>
+                        <td><a href="mailto: info@gymfitness.com" >info@gymfitness.com</a> </td>
                     </tr>
                     <tr>
                         <td>Phone</td>
@@ -98,50 +146,7 @@
         </div>
     </div>
 
-    <?php
-    global $conn;
-    require_once "../connect.php";
-    $userID = 1;
 
-    if (!empty($_POST)) {
-
-        $name = mysqli_real_escape_string($conn, $_POST['name']);
-        $surname = mysqli_real_escape_string($conn, $_POST['username']);
-        $phone = mysqli_real_escape_string($conn, $_POST['phone']);
-        $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $service = mysqli_real_escape_string($conn, $_POST['service']);
-        $message = mysqli_real_escape_string($conn,$_POST['message']);
-
-        if (empty($name)) {
-            $errors[] = 'Name is empty';
-        }
-
-        if(empty($surname)){
-            $errors[] = 'Surname is empty';
-        }
-
-        if (empty($email)) {
-            $errors[] = 'Email is empty';
-        } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = 'Email is invalid';
-        }
-
-        if (empty($message)) {
-            $errors[] = 'Message is empty';
-        }
-
-        $query_insert = "INSERT INTO `users`.`contactus`
-                     set userID = '" . $userID . "',
-                     name    = '" . $name . "',
-                     username    = '" . $surname . "',
-                     phone   = '" . $phone . "',
-                     email    = '" . $email . "',
-                     service = '" . $service . "',
-                     message = '" . $message . "'";
-
-        mysqli_query($conn, $query_insert);
-    }
-    ?>
 
     <div class="footer">
         <footer>

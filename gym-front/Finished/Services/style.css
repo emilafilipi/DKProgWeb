@@ -521,64 +521,8 @@ footer {
 }
 
 
-
-.header h1{
-	color: white;
-	font-family: 'Ubuntu', sans-serif;
-	font-display: bold;
-	font-size: 350%;
-}
-.header h5{
-	color: rgba(243, 235, 235, 0.6);
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 115%;
-}
-.header #image{
-	float: right;
-	padding: 0px 0px 0px 40px;
-	margin: 0px 0px 0px 30px;
-}
-.header #image img{
-    max-width: 100%;
-    height: auto;
-}
-.header .title{
-	padding: 10px 10px 0px 10px;
-	margin: 35px 10px 15px 35px;
-}
-.header #ikona{
-    padding: 30px 30px 0px 10px;
-    margin: 0px 0px 0px 50px;
-}
-.header #ikona img{
-    max-width: 80%;
-    height: auto;
-}
-
-
-.header .download{
-	width:50px;
-	height:23px;
-	display: inline-flex;
-	padding: 50px 30px 0px 10px;
-	margin: 0px 0px 0px 80px;
-    z-index: 1;
-    zoom: 0.3;
-    padding-left: 220px;
-    gap: 50px;
-}
-
-.header .banner{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction: row;
-}
-
 @media (max-width: 1023px) {
-    .header .banner {
-      flex-direction: column-reverse;
-    }
+
     .header .dumbbell{
         flex-direction: row;
     }
@@ -592,9 +536,7 @@ footer {
 
 }
 @media (max-width: 767px) {
-    .header .banner {
-      flex-direction: column-reverse;
-    }
+
     .header .navbar .navleft{
     flex-direction: column;
     }
@@ -622,25 +564,109 @@ footer {
     .header .navbar div {
     padding: 10px;
     }
+}
 
-    .header #image {
-    width: 100%; 
+
+.page{
+    padding: 50px 50px 50px 50px;
+    text-align: left;
+    margin: 0px 0px 0px 0px;
+    height: 0%;
+}
+
+/* Containeri i te gjithe paketave(3) ne qender */
+
+.page #package-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: row;
+}
+
+
+/*Titulli i faqes*/
+.page h3{
+    margin-bottom: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 250%;
+}
+.page h2{
+    margin-bottom: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 150%;
+}
+.page h1{
+    margin-bottom: 60px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 150%;
+}
+.page .button{
+    position: relative;
+    bottom: -30px;
+    float: right;
+    background-color: black;
+    color: white;
+    padding: 15px 30px;
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 8px;
+}
+
+.button:hover{
+    background-color:darkgray;
+    cursor: pointer;
+}
+
+.page .package{
+    margin: 10px;
+    background-color: white;
+    width: 25%;
+    height: 330px;
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+    box-shadow: 3px 5px 10px #888888;
+
+    transition: all 1s;
+}
+.page .package:hover{
+    transform: scale(1.1);
+}
+
+
+
+
+/*What is GYM Fitness*/
+.tekst1{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: left;
+    height: 0%;
+    padding: 0px 50px 0px 50px;
+    margin: 0px 0px 0px 0px;
+}
+.about1 h2{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 110%;
+    font-weight: lighter;
+    text-align: left;
+}
+.about1 .image{
+    width: 300px;
     height: auto;
-    padding: 0px;
-    margin: 20px;
-    }
-    .header #ikona {
-    width: 100%; 
-    height: auto;
-    padding: 0px;
-    margin: 10px;
-    }
+    float: right;
+    padding: 30px 50px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+.about1{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: row;
+    padding: 10px 10px 20px 10px;
+    margin: 35px 60px 15px 60px;
+    background-color: #F9F9F9;
+    border-radius: 20px;
+}
 
-    .header .title {
-    margin: 10px;
-    }
-
-    .header .download {
-    margin: 10px;
-    }
+#showStrength{
+    display: none;
 }

@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
+        <script src="script.js"></script>
         <title>Services</title>
     </head>
     <body>
@@ -39,111 +40,77 @@
             </div>
         </div>
         <br>
-        <section class="program section" id="program">
-            <div class="contanier">
-                <div class="section__data">
-                    <h2 class="section__subtitle">Our Program</h2>
-                    <div class="section__titles">
-                        <h1 class="section__title-border">BUILD YOUR</h1>
-                        <h1 class="section__title">BEST BODY</h1>
-                    </div>  
-                </div>
-                <div class="program__container">
-                    <article class="program__card">
-                        <div class="program__shape">
-                            <img src="program1.png" alt="program image" class="program__img">
-                        </div>
-                        <h3 class="program__title">Flex Muscle</h3>
-                        <p class="program__description">
-                            Creating tension that's temporarily making the muscle fibres much more smaller.
-                        </p>
-                    </article>
+        <div class="page" id="page">
+            <h3>What we offer</h3>
+            <h1>Sign up for one of our weekly classes!</h1>
 
-                    <article class="program__card">
-                        <div class="program__shape">
-                            <img src="program2.png" alt="program image" class="program__img">
-                        </div>
-    
-                        <h3 class="program__title">Cardio Exercise</h3>
-                        <p class="program__description">
-                            Try these cardio workouts at the gym when you want something different or new !
-                        </p>
-                    </article>
 
-                    <article class="program__card">
-                        <div class="program__shape">
-                            <img src="program3.png" alt="program image" class="program__img">
-                        </div>
-    
-                        <h3 class="program__title">Yoga Journal</h3>
-                        <p class="program__description">
-                            Unlimited yoga poses, meditation & live streaming from our studio to your home.
-                        </p>
-    
-                    </article>
-
-                    <article class="program__card">
-                        <div class="program__shape">
-                            <img src="program4.png" alt="program image" class="program__img">
-                        </div>
-    
-                        <h3 class="program__title">Weight Lifting</h3>
-                        <p class="program__description">
-                            Define clear & achievable goals for the weight lifting journey, track your progress.
-                        </p>
-    
-                    </article>
-                    
-                </div>
-            </div>
-        </section>
-
-        <section class="choose section" id="section">
-            <div class="choose__overflow">
-                <div class="choose__container container grid">
-                    <div class="choose__content">
-                        <div class="section__data">
-                            <h2 class="section__subtitle">Best Reason</h2>
-                            <div class="section__titles">
-                                <h1 class="section__title-border"></h1>
-                                <h1 class="section__title">Choose Us</h1>
-                            </div>
-                        </div>
-                        <p class="choose__description">
-                            Choose your favourite class and start now. Remember the only bad workout is the one you did not do!
-                        </p>
-
-                        <div class="choose__data">
-                            <div class="choose__group">
-                                <h3 class="choose__number">200+</h3>
-                                <p class="choose__subtitle">Total Members</p>
-                            </div>
-                            <div class="choose__group">
-                                <h3 class="choose__number">50+</h3>
-                                <p class="choose__subtitle">Best Trainers</p>
-                            </div>
-                            <div class="choose__group">
-                                <h3 class="choose__number">25+</h3>
-                                <p class="choose__subtitle">Programs</p>
-                            </div>
-                            <div class="choose__group">
-                                <h3 class="choose__number">100+</h3>
-                                <p class="choose__subtitle">Awards</p>
-                            </div>
-                        </div>
+                <div id="package-container">
+                    <!--Paketa 1-->
+                    <div class="package" id="strength" onclick="showDetails('strength')">
+                            <h2>Muscle Surrender</h2><br>
+                            <p>Forge your body with our strength training class that combines traditional and cutting-edge
+                            techniques. Elevate your strength, improve endurance, and experience a transformation like never before.
+                            </p><br>
+                            <button class="button">Sign up</button>
                     </div>
-
-                    <div class="choose__images">
-                        <img src="choose-img.png" alt="choose image" class="choose__images">
-
-                        <div class="choose__triangle choose__triangle-1"></div>
-                        <div class="choose__triangle choose__triangle-2"></div>
-                        <div class="choose__triangle choose__triangle-3"></div>
+                    <!--Paketa 2-->
+                    <div class="package" id="lift" onclick="showDetails('lift')">
+                            <h2>Lift & Lounge</h2><br>
+                            <p>Forge a calm and powerful core in our weight lifting class that focuses on
+                                core strength and stability. Unwind tension as you lift, sculpt, and redefine your body's center.
+                            </p><br><br>
+                            <button class="button">Sign up</button>
+                    </div>
+                    <!--Paketa 3-->
+                    <div class="package" id="yoga" onclick="showDetails('yoga')">
+                            <h2>Yoga & Unwind</h2><br>
+                            <p>Embrace tranquility and flexibility in our yoga class where ancient yoga meets modern wellness.
+                            Connect mind and body, strengthen your core, and discover a serene escape from the daily
+                            hustle as you find balance for your mind and body.
+                            </p>
+                            <button class="button">Sign up</button>
+                    </div>
+                    <!--Paketa 4-->
+                    <div class="package" id="cardio" onclick="showDetails('cardio')">
+                            <h2>Sweat It Off!</h2><br>
+                            <p>Experience the thrill of our high-intensity cardio class designed to push your limits. Get
+                                your heart racing, break a sweat, and achieve new levels of cardiovascular fitness.
+                            </p><br><br>
+                            <button class="button">Sign up</button>
                     </div>
                 </div>
 
+            <div class="showOnClick">
+                <div class="click" id="showStrength">
+                    <div class="about1">
+                        <div class="left">
+                            <div class="tekst1">
+                                <h1 class="what">What is GYM Fitness?</h1>
+                                <h2 class="what">Introducing the cutting-edge gym app, "GYM Fitness". This revolutionary fitness companion is designed to elevate your workout experience to new heights. With an array of customizable features and user-friendly interface, GYM Fitness becomes your personal fitness coach, guiding you on your journey to a healthier lifestyle. <br>
+                                    The app offers skilled personal trainers to help and guide you throughout the journey of reinventing yourself, and a vast library of workout routines tailored to different fitness levels, ensuring that both beginners and seasoned athletes can find their perfect match. But that's not all – GYM Fitness goes beyond workouts, tracking and visualizing your progress, and determinign the most optimal workouts for you.<br>
+                                    With GYM Fitness at your fingertips, achieving your fitness goals has never been more accessible, enjoyable, and rewarding. Embrace a new era of fitness and let FitZone empower you to unleash your full potential.</h2>
+                            </div>
+                        </div>
+                        <div class=image>
+                            <img src="../ikona, foto/about sc.png"><br><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="click lift">
+
+                </div>
+                <div class="click yoga">
+
+                </div>
+                <div class="click cardio">
+
+                </div>
+
             </div>
-        </section>
+        </div>
+
+
 
         <section class="pricing section" id="pricing">
             <div class="contanier">

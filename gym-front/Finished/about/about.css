@@ -450,10 +450,11 @@ body{
 }
 
 /*Stilizim i teksteve ne te tere faqen*/
-.footer p{
+.footer p, a{
     color: #3F3F3F;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
+    text-decoration: none;
 }
 
 /*Stilimi i te gjitha ikonave qe te jene te barabarta*/

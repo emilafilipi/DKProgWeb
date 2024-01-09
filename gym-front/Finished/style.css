@@ -699,6 +699,12 @@ Responsiviteti ne momentin qe arrihet width 1100px, kalohet nga rresht ne kolone
 }
 
 /* Stilizimi i cdo div */
+.footer p, a{
+    color: #3F3F3F;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+}
 
 .footer .footer-div{
     margin: 50px;
@@ -720,13 +726,6 @@ Responsiviteti ne momentin qe arrihet width 1100px, kalohet nga rresht ne kolone
     padding: 24.5px 10px 24.5px 10px;
 }
 
-/* Stilizim i teksteve ne te tere faqen */
-
-.footer p{
-    color: #3F3F3F;
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 400;
-}
 
 /* Stilimi i te gjitha ikonave qe te jene te barabarta*/
 

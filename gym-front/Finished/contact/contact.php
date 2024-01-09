@@ -15,7 +15,6 @@ require_once "../connect.php";
 session_start();
 $userID = $_SESSION["userID"];
 
-
 if (!empty($_POST)) {
 
     $name = mysqli_real_escape_string($conn, $_POST['name']);
@@ -55,6 +54,7 @@ if (!empty($_POST)) {
     $query_result = mysqli_query($conn, $query_insert);
 
 }
+
 ?>
     <div class="header" id="header">
         <div class="navbar">
@@ -64,7 +64,7 @@ if (!empty($_POST)) {
                         <div class="gym"><a style="text-decoration:none" href="../index.html" class="home">GYM</a></div>
                     </div>
                 <div class="navbar"><a style="text-decoration:none" href="../index.html" class="home">Home</a></div>
-                <div class="navbar"><a style="text-decoration:none" href="../Services/services.html" class="services">Services</a></div>
+                <div class="navbar"><a style="text-decoration:none" href="../Services/services.php" class="services">Services</a></div>
 
                 <div class="dropdown">
                     <a style="text-decoration:none" href="../index.html#features" class="features-btn">Features &#709</a>
@@ -121,7 +121,7 @@ if (!empty($_POST)) {
                     </div>
                     <label>Message</label>
                     <textarea name="message" rows="5"></textarea>
-                    <button type="submit" id="submit">SEND</button>
+                    <button type="submit" id="submit" name="submit">SEND</button>
                 </form>
             </div>
             <div class="contact-right">

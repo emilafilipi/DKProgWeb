@@ -85,7 +85,7 @@ foreach ($labelsToCheck as $label) {
                 <div class="gym"><a style="text-decoration:none" href="../index.html" class="home">GYM</a></div>
             </div>
             <div class="navbar"><a style="text-decoration:none" href="../index.html" class="home">Home</a></div>
-            <div class="navbar"><a style="text-decoration:none" href="../Services/services.html" class="services">Services</a></div>
+            <div class="navbar"><a style="text-decoration:none" href="../Services/services.php" class="services">Services</a></div>
 
             <div class="dropdown">
                 <a style="text-decoration:none" href="../index.html#features" class="features-btn">Features &#709</a>

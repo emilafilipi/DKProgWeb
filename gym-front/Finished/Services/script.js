@@ -36,8 +36,16 @@ function showDetails(id){
 
 function removeDetails(){
         document.getElementById("showStrength").style.display = "none";
+        document.getElementById("showLift").style.display = "none";
+        document.getElementById("showYoga").style.display = "none";
+        document.getElementById("showCardio").style.display = "none";
+
+
         document.getElementById("strength").style.display = "block";
         document.getElementById("lift").style.display = "block";
         document.getElementById("yoga").style.display = "block";
         document.getElementById("cardio").style.display = "block";
 }
+
+
+

@@ -638,11 +638,12 @@ footer {
 /*What is GYM Fitness*/
 .tekst1{
     font-family: 'Ubuntu', sans-serif;
+    color: #f0f0f0;
     text-align: left;
     height: 0%;
-    padding: 0px 20px 0px 20px;
+    padding: 20px 20px 20px 20px;
     margin: 70px 70px 100px 70px;
-    background: rgba(240, 240, 240, 0.5);
+    background: rgba(14, 14, 14, 0.5);
     border-radius: 20px;
 }
 .click h2{
@@ -651,6 +652,7 @@ footer {
     font-weight: lighter;
     text-align: left;
 }
+
 
 .contain{
     justify-content:center;
@@ -666,14 +668,17 @@ footer {
     display: none;
 }
 
+
 .strength{
     background-image: url("../ikona, foto/strength.jpg");
 }
 .lift{
     background-image: url("../ikona, foto/lift.jpg");
+    background-size: cover;
 }
 .yoga{
     background-image: url("../ikona, foto/yoga.jpg");
+    background-size: cover;
 }
 .cardio{
     background-image: url("../ikona, foto/cardio.png");

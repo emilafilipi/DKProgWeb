@@ -640,33 +640,52 @@ footer {
     font-family: 'Ubuntu', sans-serif;
     text-align: left;
     height: 0%;
-    padding: 0px 50px 0px 50px;
-    margin: 0px 0px 0px 0px;
+    padding: 0px 20px 0px 20px;
+    margin: 70px 70px 100px 70px;
+    background: rgba(240, 240, 240, 0.5);
+    border-radius: 20px;
 }
-.about1 h2{
+.click h2{
     font-family: 'Ubuntu', sans-serif;
     font-size: 110%;
     font-weight: lighter;
     text-align: left;
 }
-.about1 .image{
-    width: 300px;
-    height: auto;
-    float: right;
-    padding: 30px 50px 0px 0px;
-    margin: 0px 0px 0px 0px;
-}
-.about1{
-    display:flex;
+
+.contain{
     justify-content:center;
     align-items:center;
     flex-direction: row;
     padding: 10px 10px 20px 10px;
-    margin: 35px 60px 15px 60px;
+    margin: 35px 120px 15px 120px;
     background-color: #F9F9F9;
     border-radius: 20px;
 }
 
-#showStrength{
+#showStrength, #showLift, #showYoga, #showCardio{
     display: none;
+}
+
+.strength{
+    background-image: url("../ikona, foto/strength.jpg");
+}
+.lift{
+    background-image: url("../ikona, foto/lift.jpg");
+}
+.yoga{
+    background-image: url("../ikona, foto/yoga.jpg");
+}
+.cardio{
+    background-image: url("../ikona, foto/cardio.png");
+}
+
+.contain .signupButton{
+    float: left;
+}
+.contain .close{
+    bottom: -10px;
+    border: 2px solid crimson;
+    background: crimson;
+    color: ghostwhite;
+    padding: 5px 10px;
 }

@@ -611,6 +611,10 @@ footer {
     border: none;
     border-radius: 8px;
 }
+.submittedButton{
+    float: left;
+    display: none;
+}
 
 .button:hover{
     background-color:darkgray;

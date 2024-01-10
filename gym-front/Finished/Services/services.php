@@ -14,6 +14,7 @@
     require_once "../connect.php";
 
     session_start();
+
     $userID = $_SESSION["userID"];
     $strength = 'Muscle Surrender';
     $lift = 'Lift & Lounge';
@@ -21,19 +22,20 @@
     $cardio = 'Sweat It Off!';
 
 
-    $query_check_strength = "SELECT * FROM `users`.`classes` WHERE userID = $userID AND classesChosen = '$strength'";
+    $query_check_strength = "SELECT * FROM `users`.`classes` WHERE userID = '$userID' AND classesChosen = '$strength'";
     $result_check_strength = mysqli_query($conn, $query_check_strength);
     $signed_up_strength = mysqli_num_rows($result_check_strength) > 0;
 
-    $query_check_lift = "SELECT * FROM `users`.`classes` WHERE userID = $userID AND classesChosen = '$lift'";
+
+    $query_check_lift = "SELECT * FROM `users`.`classes` WHERE userID = '$userID' AND classesChosen = '$lift'";
     $result_check_lift = mysqli_query($conn, $query_check_lift);
     $signed_up_lift = mysqli_num_rows($result_check_lift) > 0;
 
-    $query_check_yoga = "SELECT * FROM `users`.`classes` WHERE userID = $userID AND classesChosen = '$yoga'";
+    $query_check_yoga = "SELECT * FROM `users`.`classes` WHERE userID = '$userID' AND classesChosen = '$yoga'";
     $result_check_yoga = mysqli_query($conn, $query_check_yoga);
     $signed_up_yoga = mysqli_num_rows($result_check_yoga) > 0;
 
-    $query_check_cardio = "SELECT * FROM `users`.`classes` WHERE userID = $userID AND classesChosen = '$cardio'";
+    $query_check_cardio = "SELECT * FROM `users`.`classes` WHERE userID = '$userID' AND classesChosen = '$cardio'";
     $result_check_cardio = mysqli_query($conn, $query_check_cardio);
     $signed_up_cardio = mysqli_num_rows($result_check_cardio) > 0;
 
@@ -41,6 +43,7 @@
         $query_insert = "INSERT INTO `users`.`classes` (userID, classesChosen) VALUES ($userID, '$strength')";
         $result_insert = mysqli_query($conn, $query_insert);
     }
+
     if(isset($_POST['submitLift']) && !$signed_up_lift){
         $query_insert = "INSERT INTO `users`.`classes` (userID, classesChosen) VALUES ($userID, '$lift')";
         $result_insert = mysqli_query($conn, $query_insert);
@@ -53,8 +56,9 @@
         $query_insert = "INSERT INTO `users`.`classes` (userID, classesChosen) VALUES ($userID, '$cardio')";
         $result_insert = mysqli_query($conn, $query_insert);
     }
-    //$query_delete = "DELETE FROM users.classes";
-    //$result_check_delete = mysqli_query($conn, $query_delete);
+
+  //$query_delete = "DELETE FROM users.classes";
+  //$result_check_delete = mysqli_query($conn, $query_delete);
     ?>
 
         <div class="header">
@@ -107,8 +111,15 @@
                                     <br>
                                     18:00 - 19:30</em>
                                 </h2>
-                            <form action="services.php" method="post" onsubmit="return submitForm('submitStrength', 'submitStrength2', <?php echo $signed_up_strength ? 'true' : 'false'; ?>);">
-                                <button type="submit" name="submitStrength" id="submitStrength" class="button signupButton" <?php echo $signed_up_strength ? 'disabled style="background-color: #808080;"' : ''; ?>>Sign up</button>
+                            <form action="services.php" method="post" onsubmit="return submitForm('submitStrength',
+                            <?php echo $signed_up_strength ? 'true' : 'false'; ?>);">
+                                <button type="submit" name="submitStrength" id="submitStrength" class="button signupButton"
+                                    <?php echo isset($_POST["submitStrength"]) ? 'style="display: none;"; ' : '';?>>Sign up
+                                </button>
+                                <button type="submit" name="submittedStrength" id="submittedStrength" class="button submittedButton"
+                                    <?php echo isset($_POST["submitStrength"]) ? 'disabled style="display: block; cursor: not-allowed; 
+                                    background-color: #808080;"; ' : '';?>>Already registered
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -128,8 +139,15 @@
                                     <br>
                                     18:30 - 20:00</em>
                             </h2>
-                            <form action="services.php" method="post" onsubmit="return submitForm('submitLift', 'submitLift2', <?php echo $signed_up_lift ? 'true' : 'false'; ?>);">
-                                <button type="submit" name="submitLift" id="submitLift" class="button signupButton" <?php echo $signed_up_lift ? 'disabled style="background-color: #808080;"' : ''; ?>>Sign up</button>
+                            <form action="services.php" method="post"  onsubmit="return submitForm('submitLift',
+                            <?php echo $signed_up_lift ? 'true' : 'false'; ?>);">
+                                <button type="submit" name="submitLift" id="submitLift" class="button signupButton"
+                                    <?php echo isset($_POST["submitLift"]) ? 'style="display: none"; ' : '';?>>Sign up
+                                </button>
+                                <button type="submit" name="submitLift" id="submittedLift" class="button submittedButton"
+                                    <?php echo isset($_POST["submitLift"]) ? 'disabled style="display: block; cursor: not-allowed; 
+                                    background-color: #808080;"; ' : '';?>>Already registered
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -149,8 +167,15 @@
                                     <br>
                                     19:00 - 21:00</em>
                             </h2>
-                            <form action="services.php" method="post" onsubmit="return submitForm('submitYoga', 'submitYoga2', <?php echo $signed_up_yoga ? 'true' : 'false'; ?>);">
-                                <button type="submit" name="submitYoga" id="submitYoga" class="button signupButton" <?php echo $signed_up_yoga ? 'disabled style="background-color: #808080;"' : ''; ?>>Sign up</button>
+                            <form action="services.php" method="post"  onsubmit="return submitForm('submitYoga',
+                            <?php echo $signed_up_yoga ? 'true' : 'false'; ?>);" >
+                                <button type="submit" name="submitYoga" id="submitYoga" class="button signupButton"
+                                    <?php echo isset($_POST["submitYoga"]) ? 'style="display: none"; ' : '';?> >Sign up
+                                </button>
+                                <button type="submit" name="submitYoga" id="submitYoga" class="button submittedButton"
+                                    <?php echo isset($_POST["submitYoga"]) ? 'disabled style="display: block; cursor: not-allowed; 
+                                    background-color: #808080;"; ' : '';?>>Already registered
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -170,8 +195,16 @@
                                     <br>
                                     18:00 - 19:30</em>
                             </h2>
-                            <form action="services.php" method="post" onsubmit="return submitForm('submitCardio', 'submitCardio2', <?php echo $signed_up_cardio ? 'true' : 'false'; ?>);">
-                                <button type="submit" name="submitCardio" id="submitCardio" class="button signupButton" <?php echo $signed_up_cardio ? 'disabled style="background-color: #808080;"' : ''; ?>>Sign up</button>
+                            <form action="services.php" method="post" onsubmit="return submitForm('submitCardio',
+                            <?php echo $signed_up_cardio ? 'true' : 'false'; ?>);">
+                                <button type="submit" name="submitCardio" id="submitCardio" class="button signupButton"
+                                    <?php echo isset($_POST["submitCardio"]) ? 'style="display: none"; ' : '';?>>Sign up
+                                </button>
+                                <button type="submit" name="submitCardio" id="submitCardio" class="button submittedButton"
+                                    <?php echo isset($_POST["submitCardio"]) ? 'disabled style="display: block; cursor: not-allowed; 
+                                    background-color: #808080;"; ' : '';?>>Already registered
+                                </button>
+
                             </form>
                         </div>
                     </div>
@@ -188,7 +221,7 @@
                             <p>Forge your body with our strength training class that combines traditional and cutting-edge
                             techniques. Elevate your strength, improve endurance, and experience a transformation like never before.
                             </p><br>
-                            <button class="button" id="submitStrength2" onclick="showDetails('strength')">Sign up</button>
+                            <button class="button" onclick="showDetails('strength')">Show details</button>
                     </div>
                     <!--Paketa 2-->
                     <div class="package" id="lift" onclick="showDetails('lift')">
@@ -196,7 +229,7 @@
                             <p>Forge a calm and powerful core in our weight lifting class that focuses on
                                 core strength and stability. Unwind tension as you lift, sculpt, and redefine your body's center.
                             </p><br><br>
-                            <button class="button" id="submitLift2" onclick="showDetails('lift')">Sign up</button>
+                            <button class="button" onclick="showDetails('lift')">Show details</button>
                     </div>
                     <!--Paketa 3-->
                     <div class="package" id="yoga" onclick="showDetails('yoga')">
@@ -205,7 +238,7 @@
                             Connect mind and body, strengthen your core, and discover a serene escape from the daily
                             hustle as you find balance for your mind and body.
                             </p>
-                            <button class="button" id="submitYoga2" onclick="showDetails('yoga')">Sign up</button>
+                            <button class="button" onclick="showDetails('yoga')">Show details</button>
                     </div>
                     <!--Paketa 4-->
                     <div class="package" id="cardio" onclick="showDetails('cardio')">
@@ -213,7 +246,7 @@
                             <p>Experience the thrill of our high-intensity cardio class designed to push your limits. Get
                                 your heart racing, break a sweat, and achieve new levels of cardiovascular fitness.
                             </p><br><br>
-                            <button class="button" id="submitCardio2" onclick="showDetails('cardio')">Sign up</button>
+                            <button class="button" onclick="showDetails('yoga')">Show details</button>
                     </div>
                 </div>
 

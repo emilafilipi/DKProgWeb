@@ -47,5 +47,24 @@ function removeDetails(){
         document.getElementById("cardio").style.display = "block";
 }
 
+function submitForm(id, id2, signedUp) {
+    if (signedUp) {
+        return false; // Prevent form submission if the user is already signed up
+    }
+
+    button1 = document.getElementById(id);
+    button2 = document.getElementById(id2);
+          // Disable the button and change its color
+    button1.disabled = true;
+    button2.disabled = true;
+
+    button1.style.backgroundColor = "#808080"; // Grey color
+    button2.style.backgroundColor = "#808080";
+
+    button1.style.cursor = "none";
+    button2.style.cursor = "none";
+
+    return true; // Allow the form to be submitted
+}
 
 

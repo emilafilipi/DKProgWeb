@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,13 +10,13 @@
         <title>Services</title>
     </head>
     <body>
+
     <?php
     global $conn;
     require_once "../connect.php";
 
     session_start();
-
-    $userID = $_SESSION['userID'];
+    $userID = $_SESSION["userID"];
 
     $strength = 'Muscle Surrender';
     $lift = 'Lift & Lounge';
@@ -58,8 +59,8 @@
         $result_insert = mysqli_query($conn, $query_insert);
     }
 
-  //$query_delete = "DELETE FROM users.classes";
-  //$result_check_delete = mysqli_query($conn, $query_delete);
+    //$query_delete = "DELETE FROM users.classes";
+    //$result_check_delete = mysqli_query($conn, $query_delete);
     ?>
 
         <div class="header">

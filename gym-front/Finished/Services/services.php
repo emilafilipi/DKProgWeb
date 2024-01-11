@@ -15,8 +15,8 @@
 
     session_start();
 
-    $userID = $_SESSION["userID"];
-    
+    $userID = $_SESSION['userID'];
+
     $strength = 'Muscle Surrender';
     $lift = 'Lift & Lounge';
     $yoga = 'Yoga & Unwind';

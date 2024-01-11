@@ -698,3 +698,136 @@ footer {
     color: ghostwhite;
     padding: 5px 10px;
 }
+
+
+
+/*Footer*/
+.footer .footer-container{
+    background-color: white;
+    padding: 50px 50px 50px 50px;
+    text-align: left;
+    margin: 0px 0px 0px 0px;
+    height: 0%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: row;
+}
+
+/*Responsiviteti per ekrane me te vogla se laptopi*/
+@media (max-width: 1100px) {
+    .footer .footer-container {
+        flex-direction: column;
+    }
+}
+
+/*Stilizimi i cdo div*/
+.footer .footer-div{
+    margin: 50px;
+    background-color: white;
+    width: 250px;
+    height: 200px;
+    padding: 0px 20px 20px 20px;
+}
+
+.footer body {
+    padding:0;
+    margin:0;
+}
+.footer .fa-dumbbell{
+    background-color: #E5F5FF;
+    border-radius: 5px;
+    padding: 24.5px 10px 24.5px 10px;
+}
+
+/*Stilizim i teksteve ne te tere faqen*/
+.footer p, a{
+    color: #3F3F3F;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+/*Stilimi i te gjitha ikonave qe te jene te barabarta*/
+.footer .fa-brands{
+    background-color: #F9F9F9;
+    border-radius: 40px;
+    padding: 10px;
+}
+.footer .fa-facebook-f{
+    padding: 10px 13px 10px 13px;
+}
+.footer .fa-linkedin-in, .footer .fa-instagram{
+    padding: 10px 11px 10px 11px;
+}
+
+/*Butoni send, input text box dhe stilimi per te dyja */
+.footer #send-btn{
+    background-color: black;
+    height:52px;
+    color:white;
+    border: 2px solid #ccc;
+    border-radius: 0px 10px 10px 0px;
+    padding: 5px 15px;
+    margin-left: 3px;
+}
+.footer .input{
+    border-color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: row;
+    width:max-content;
+}
+
+.footer #input-field{
+    background-color: #F9F9F9;
+    height: 38px;
+    border: 2px solid #F9F9F9;
+    border-radius: 10px 0px 0px 10px;
+    padding: 5px 10px;
+}
+
+/* Copyrighti ne fund te faqes */
+footer {
+    background-color: #f0f0f0;
+    padding: 30px;
+    color: #000;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Copyright section */
+footer .copyright {
+    text-align: center;
+    margin-top: 20px;
+    color: #777;
+}
+
+/*Responsiviteti per ekrane te vogla*/
+@media screen and (max-width: 768px) {
+    footer .right {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+/*Responsiviteti per ekrane 576px dhe me te vogla*/
+@media screen and (max-width: 576px) {
+    footer .right {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    footer .left,
+    footer .right {
+        width: 100%;
+        display: block;
+    }
+
+    footer .right a {
+        display: inline-block;
+        margin: 5px;
+    }
+}

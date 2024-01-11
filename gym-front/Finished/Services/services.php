@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,11 +5,11 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/88a6f1c20d.js" crossorigin="anonymous"></script>
         <script src="script.js"></script>
         <title>Services</title>
     </head>
     <body>
-
     <?php
     global $conn;
     require_once "../connect.php";
@@ -62,7 +61,6 @@
     //$query_delete = "DELETE FROM users.classes";
     //$result_check_delete = mysqli_query($conn, $query_delete);
     ?>
-
         <div class="header">
             <div class="navbar">
                 <div class="navleft">
@@ -116,10 +114,10 @@
                             <form action="services.php" method="post" onsubmit="return submitForm('submitStrength',
                             <?php echo $signed_up_strength ? 'true' : 'false'; ?>);">
                                 <button type="submit" name="submitStrength" id="submitStrength" class="button signupButton"
-                                    <?php echo isset($_POST["submitStrength"]) ? 'style="display: none;"; ' : '';?>>Sign up
+                                    <?php echo isset($_POST["submitStrength"]) || $signed_up_strength ? 'style="display: none;"; ' : '';?>>Sign up
                                 </button>
                                 <button type="submit" name="submittedStrength" id="submittedStrength" class="button submittedButton"
-                                    <?php echo isset($_POST["submitStrength"]) ? 'disabled style="display: block; cursor: not-allowed; 
+                                    <?php echo isset($_POST["submitStrength"]) || $signed_up_strength ? 'disabled style="display: block; cursor: not-allowed; 
                                     background-color: #808080;"; ' : '';?>>Already registered
                                 </button>
                             </form>
@@ -144,10 +142,10 @@
                             <form action="services.php" method="post"  onsubmit="return submitForm('submitLift',
                             <?php echo $signed_up_lift ? 'true' : 'false'; ?>);">
                                 <button type="submit" name="submitLift" id="submitLift" class="button signupButton"
-                                    <?php echo isset($_POST["submitLift"]) ? 'style="display: none"; ' : '';?>>Sign up
+                                    <?php echo isset($_POST["submitLift"]) || $signed_up_lift ? 'style="display: none"; ' : '';?>>Sign up
                                 </button>
                                 <button type="submit" name="submitLift" id="submittedLift" class="button submittedButton"
-                                    <?php echo isset($_POST["submitLift"]) ? 'disabled style="display: block; cursor: not-allowed; 
+                                    <?php echo isset($_POST["submitLift"]) || $signed_up_lift ? 'disabled style="display: block; cursor: not-allowed; 
                                     background-color: #808080;"; ' : '';?>>Already registered
                                 </button>
                             </form>
@@ -172,10 +170,10 @@
                             <form action="services.php" method="post"  onsubmit="return submitForm('submitYoga',
                             <?php echo $signed_up_yoga ? 'true' : 'false'; ?>);" >
                                 <button type="submit" name="submitYoga" id="submitYoga" class="button signupButton"
-                                    <?php echo isset($_POST["submitYoga"]) ? 'style="display: none"; ' : '';?> >Sign up
+                                    <?php echo isset($_POST["submitYoga"]) || $signed_up_yoga ? 'style="display: none"; ' : '';?> >Sign up
                                 </button>
                                 <button type="submit" name="submitYoga" id="submitYoga" class="button submittedButton"
-                                    <?php echo isset($_POST["submitYoga"]) ? 'disabled style="display: block; cursor: not-allowed; 
+                                    <?php echo isset($_POST["submitYoga"]) || $signed_up_yoga ? 'disabled style="display: block; cursor: not-allowed; 
                                     background-color: #808080;"; ' : '';?>>Already registered
                                 </button>
                             </form>
@@ -200,10 +198,10 @@
                             <form action="services.php" method="post" onsubmit="return submitForm('submitCardio',
                             <?php echo $signed_up_cardio ? 'true' : 'false'; ?>);">
                                 <button type="submit" name="submitCardio" id="submitCardio" class="button signupButton"
-                                    <?php echo isset($_POST["submitCardio"]) ? 'style="display: none"; ' : '';?>>Sign up
+                                    <?php echo isset($_POST["submitCardio"]) || $signed_up_cardio ? 'style="display: none"; ' : '';?>>Sign up
                                 </button>
                                 <button type="submit" name="submitCardio" id="submitCardio" class="button submittedButton"
-                                    <?php echo isset($_POST["submitCardio"]) ? 'disabled style="display: block; cursor: not-allowed; 
+                                    <?php echo isset($_POST["submitCardio"]) || $signed_up_cardio ? 'disabled style="display: block; cursor: not-allowed; 
                                     background-color: #808080;"; ' : '';?>>Already registered
                                 </button>
 
@@ -248,7 +246,7 @@
                             <p>Experience the thrill of our high-intensity cardio class designed to push your limits. Get
                                 your heart racing, break a sweat, and achieve new levels of cardiovascular fitness.
                             </p><br><br>
-                            <button class="button" onclick="showDetails('yoga')">Show details</button>
+                            <button class="button" onclick="showDetails('cardio')">Show details</button>
                     </div>
                 </div>
 
@@ -256,118 +254,64 @@
 
 
 
-        <section class="pricing section" id="pricing">
-            <div class="contanier">
-                <div class="section__data">
-                    <h2 class="section__subtitle">Pricing</h2>
-                    <div class="section__title">
-                        <h1 class="section__title-border">OUR</h1>
-                        <h1 class="section__title">SPECIAL PLANS</h1>
-                    </div>
-                </div>
 
-                <div class="pricing__container grid">
-                    <article class="pricing__card">
-                        <header class="pricing__header">
-                            <div class="pricing__shape">
-                                <img src="pricing1.png" alt="pricing image" class="pricing__img">
-                            </div>
-
-                            <h1 class="pricing__title">Basic Package</h1>
-                            <h2 class="pricing__number">Starting at $150</h2>
-                        </header>
-                        <ul class="pricing__list">
-                            <li class="pricing item">
-                                <i class="fa-duotone fa-circle-check"></i> 5 Days in a week
-                            </li>
-                            <li class="pricing item">
-                                <i class="fa-duotone fa-circle-check"></i> 01 Sweatshirt
-                            </li>
-                            <li class="pricing item pricing__item-opacity">
-                                <i class="fa-duotone fa-circle-check"></i> 01 Bottle of Protein
-                            </li>
-                            <li class="pricing item pricing__item-opacity">
-                                <i class="fa-duotone fa-circle-check"></i> Access to Videos
-                            </li>
-                            <li class="pricing item pricing__item-opacity">
-                                <i class="fa-duotone fa-circle-check"></i>Muscle Stretching
-                            </li>
-                        </ul>
-
-                    </article>
-
-                    <article class="pricing__card pricing__card-active">
-                        <header class="pricing__header">
-                            <div class="pricing__shape">
-                                <img src="pricing2.png" alt="pricing image" class="pricing__img">
-                            </div>
-
-                            <h1 class="pricing__title">Premium Package</h1>
-                            <h2 class="pricing__number">Starting at $239</h2>
-                        </header>
-                        <ul class="pricing__list">
-                            <li class="pricing item">
-                                <i class="fa-duotone fa-circle-check"></i> 5 Days in a week
-                            </li>
-                            <li class="pricing item">
-                                <i class="fa-duotone fa-circle-check"></i> 01 Sweatshirt
-                            </li>
-                            <li class="pricing item">
-                                <i class="fa-duotone fa-circle-check"></i> 01 Bottle of Protein
-                            </li>
-                            <li class="pricing item pricing__item-opacity">
-                                <i class="fa-duotone fa-circle-check"></i> Access to Videos
-                            </li>
-                            <li class="pricing item pricing__item-opacity">
-                                <i class="fa-duotone fa-circle-check"></i>Muscle Stretching
-                            </li>
-                        </ul>
-
-                    </article>
-
-                    <article class="pricing__card">
-                        <header class="pricing__header">
-                            <div class="pricing__shape">
-                                <img src="pricing3.png" alt="pricing image" class="pricing__img">
-                            </div>
-
-                            <h1 class="pricing__title">Diamond Package</h1>
-                            <h2 class="pricing__number">Starting at $339</h2>
-                        </header>
-                        <ul class="pricing__list">
-                            <li class="pricing__item">
-                                <i class="fa-duotone fa-circle-check"></i> 5 Days in a week
-                            </li>
-                            <li class="pricing item">
-                                <i class="fa-duotone fa-circle-check"></i> 01 Sweatshirt
-                            </li>
-                            <li class="pricing item">
-                                <i class="fa-duotone fa-circle-check"></i> 01 Bottle of Protein
-                            </li>
-                            <li class="pricing item">
-                                <i class="fa-duotone fa-circle-check"></i> Access to Videos
-                            </li>
-                            <li class="pricing item">
-                                <i class="fa-duotone fa-circle-check"></i>Muscle Stretching
-                            </li>
-                        </ul>
-
-                    </article>
-                </div>
-            </div>
-        </section>
         <br>
-        <div class="footer">
-            <footer>
-                <div class="copyright">
-                    <span class="left">Copyright &copy; Polytechinc University of Tirana 2023. All rights reserved.</span>
-                    <span class="right">
+    <div class="footer">
+        <!--Package container qe do mbaje te 3 divs-->
+        <div class="footer-container">
+            <!--Div 1: Ikonat e rrjeteve sociale-->
+            <div class="footer-div">
+                <div class="title">
+                    <i class="fa-solid fa-dumbbell fa-xl" style="color: #005eff;"></i>
+                    <label id="label" style="font-weight: bold;">GYM</label>
+                </div>
+                <p>Using GYMFitness, you can stay on track on your fitness journey
+                    whether you're on the go or at home.</p>
+
+                <!--                        <i class="fa-brands fa-facebook-f" style="color: #000000;"></i>-->
+                <a href="http://facebook.com" class="fa-brands fa-facebook-f" style="color: #000000;"></a>
+                <!--                        <i class="fa-brands fa-twitter" style="color: #000000;"></i>-->
+                <a href="http://twitter.com" class="fa-brands fa-twitter" style="color: #000000;"></a>
+                <!--                        <i class="fa-brands fa-linkedin-in" style="color: #000000;"></i>-->
+                <a href="http://linkedin.com" class="fa-brands fa-linkedin-in" style="color: #000000;"></a>
+                <!--                        <i class="fa-brands fa-instagram" style="color: #000000;"></i>-->
+                <a href="http://instagram.com" class="fa-brands fa-instagram" style="color: #000000;"></a>
+            </div>
+
+            <!--Div 2: Informacionet e kontaktimit-->
+            <div class="footer-div">
+                <a href="/Finished/contact/contact.html" style="text-decoration: none;"><h4>Contact Us</h4></a>
+                <p>call us: 800.275.8777<br><br>
+                    <a href="mailto: info@gymfitness.com" >info@gymfitness.com</a><br><br>
+                    www.gym.net<br><br>
+                    202 Helga Springs Rd, Crawford, TN 38554
+                </p>
+            </div>
+
+
+            <!--Div 3: Dergese emaili per newsletter-->
+            <div class="footer-div">
+                <h4>Get the latest information from us</h4>
+                <br>
+                <div class="input">
+                    <input type="text" placeholder="Enter your email" id="input-field">
+                    <button id="send-btn" onclick="validateEmail()">Send</button>
+                </div>
+                <!--Mesazh per userin kur ben submit-->
+                <p id="input-p"></p>
+            </div>
+        </div>
+        <footer>
+            <!--Pjesa e kodit te copyrightit-->
+            <div class="copyright">
+                <span class="left">Copyright &copy; Polytechinc University of Tirana 2023. All rights reserved.</span>
+                <span class="right">
                     <a href="#">Terms &amp; Conditions</a>
                     <a href="#">   Privacy Policy</a>
                     </span>
-                </div>
-            </footer> 
-        </div>
+            </div>
+        </footer>
+    </div>
 
     </body>
 

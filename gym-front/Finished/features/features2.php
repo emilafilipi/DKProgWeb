@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(!isset($_SESSION["userID"]) && !isset($_SESSION["email"])){
+    header("location: ../login/login.html");
+    die();
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,59 +27,65 @@
             }
         }
     </style>
-    <script>
-
-    </script>
 
 </head>
 <body>
 
 <?php
 
-//$workout="";
+$workout="";
 //if($_SERVER["REQUEST_METHOD"] == "POST"){
-    if(isset($_POST['Strength'])){
+if(isset($_POST['Strength'])){
 //    echo "<h1>jemi ok</h1>";
-        $workout = "Strength";
+    $workout = "Strength";
 
-    }else if(isset($_POST['Cardio'])){
+}else if(isset($_POST['Cardio'])){
 //    echo "<h1>jemi prp ok</h1>";
-        $workout = "Cardio";
+    $workout = "Cardio";
 
-    }else if(isset($_POST['LISS'])){
+}else if(isset($_POST['LISS'])){
 //    echo "<h1>jemi ok</h1>";
-        $workout = "LISS";
+    $workout = "LISS";
 
-    }else if(isset($_POST['HIIT'])){
+}else if(isset($_POST['HIIT'])){
 //    echo "<h1>jemi ok</h1>";
-        $workout = "HIIT";
-    }else if(isset($_POST['Group'])){
+    $workout = "HIIT";
+}else if(isset($_POST['Group'])){
 //        echo "<h1>jemi ok</h1>";
-        $workout = "Group";
-    }else if(isset($_POST['Flexibility/mobility'])){
+    $workout = "Group";
+}else if(isset($_POST['Flexibility/mobility'])){
 //        echo "<h1>jemi ok</h1>";
-        $workout = "Flexibility/mobility";
+    $workout = "Flexibility/mobility";
 
-    }else if(isset($_POST['Balance'])){
+}else if(isset($_POST['Balance'])){
 //        echo "<h1>jemi ok</h1>";
-        $workout = "Balance";
+    $workout = "Balance";
 
-    }else if(isset($_POST['Stability'])){
+}else if(isset($_POST['Stability'])){
 //        echo "<h1>jemi ok</h1>";
-        $workout = "Stability";
-    }
+    $workout = "Stability";
+}
 //}
 
 
+$userID = $_SESSION["userID"];
 //$userID = "1";
 global $conn;
 require_once "../connect.php";
 
-session_start();
-$userID = $_SESSION["userID"];
+if($workout!=""){
+    $query_insert = "insert into usersworkouts(userID, workout) values('".$userID."','".$workout."')";
+    $result_check = mysqli_query($conn, $query_insert);    $query_insert = "insert into usersworkouts(userID, workout) values('".$userID."','".$workout."')";
+}
 
-$query_insert = "insert into `users`.`usersworkouts` (userID, workout) values('".$userID."','".$workout."')";
-$result_check = mysqli_query($conn, $query_insert);
+$query_check = "select * from usersworkouts where userID = '".$userID."'";
+$result_check = mysqli_query($conn, $query_check);
+$MyWorkouts=[];
+$i=0;
+while($row_data = mysqli_fetch_assoc($result_check)){
+    $MyWorkouts[$i++] = $row_data["workout"];
+
+}
 
 ?>
 
@@ -88,20 +103,19 @@ $result_check = mysqli_query($conn, $query_insert);
             <div class="dropdown">
                 <a style="text-decoration:none" href="../index.html#features" class="features-btn">Features &#709</a>
                 <div class="dropdown-content">
-                    <a style="text-decoration:none" href="features1.html">General Tips</a>
+                    <a style="text-decoration:none" href="features1.php">General Tips</a>
                     <a style="text-decoration:none" href="features2.php">Choose Workout</a>
                     <a style="text-decoration:none" href="features3.php">View Progress</a>
                 </div>
             </div>
 
-            <div class="navbar"><a style="text-decoration:none" href="MyWorkouts.php" class="myWorkouts">My workouts</a></div>
+            <div class="navbar"><a style="text-decoration:none" href="MyWorkouts.php" class="about">My Workouts</a></div>
             <div class="navbar"><a style="text-decoration:none" href="../about/about.html" class="about">About</a></div>
             <div class="navbar"><a style="text-decoration:none" href="../contact/contact.php" class="contact">Contact</a></div>
         </div>
 
         <div class="navright">
-            <div class="login"><a style="text-decoration:none" href="../login/login.html" class ="login">Login</a></div>
-            <div class=navbar><a style="text-decoration:none" href="../login/signup.html" class="signup">Sign up</a></div>
+            <div class=navbar><a style="text-decoration:none" href="../login/logout.php" class="signup">Sign out</a></div>
         </div>
     </div>
 </div>
@@ -110,22 +124,10 @@ $result_check = mysqli_query($conn, $query_insert);
     <h1>Choose Workout</h1>
     <h2>Every workout session is provided by a highly skilled and experienced instructor. Choose the workout that fits you best.</h2>
 
+    <form method="post" action="features2.php" id="workouts">
 
-
-    <form method="post" action="#" id="workouts">
         <?php
-        $query_check = "select * from `users`.`usersworkouts` where userID != '".$userID."'";
-        $result_check = mysqli_query($conn, $query_check);
-        $notMyWorkouts = [];
-        $i=0;
-        while($row_data = mysqli_fetch_assoc($result_check)){
-//            echo "id: ".$row_data["userID"]." ";
-//            echo "workout: ".$row_data["workout"]." ";
-            $notMyWorkouts[$i++] = $row_data["workout"];
-        }
-
-
-        function isNotMine($array,$myName){
+        function isMyWorkout($array,$myName){
             foreach($array as $name){
                 if($name == $myName){
                     return 1;
@@ -135,68 +137,36 @@ $result_check = mysqli_query($conn, $query_insert);
             return 0;
         }
 
-        $query_check = "select * from `users`.`workouts`";
+
+        $query_check = "select * from workouts";
         $result_check = mysqli_query($conn, $query_check);
 
         while($row_data = mysqli_fetch_assoc($result_check)) {
             $workoutName = $row_data["workout"];
             $photoURL = $row_data["photo"];
             $description = $row_data["description"];
-//            $isNotMyWorkout = in_array($workoutName,$notMyWorkouts);
-//            echo "Result : ".$isNotMyWorkout." ";
 
-            $isNotMyWorkout = isNotMine($notMyWorkouts,$workoutName);
-//            echo "Result : " .isNotMine($notMyWorkouts,$workoutName). " ";
+            $isMyWorkout = isMyWorkout($MyWorkouts,$workoutName);
 
+            ?>
 
-            echo "<script>
-//function printWorkouts(){
-//    var form = document.getElementById('workouts');
-//var row = document.createElement('div');
-//row.setAttribute('class','row');
-//var col1 = document.createElement('div');
-//col1.setAttribute('class','col1');
-//var img = document.createElement('img');
-//img.setAttribute('src','$photoURL');
-//col1.appendChild(img);
-//var col2= document.createElement('div');
-//col2.setAttribute('class','col2');
-//var br = document.createElement('br');
-//var h4 = document.createElement('h4');
-//h4.appendChild(document.createTextNode('$workoutName'));
-//var p = document.createElement('p');
-//var pText = document.createTextNode('$description');
-//p.appendChild(pText);
-//var br1 = document.createElement('br');
-//var br2 = document.createElement('br');
-//var button = document.createElement('button');
-//button.appendChild(document.createTextNode('Choose workout'));
-//button.setAttribute('class','button');
-//button.setAttribute('name','$workoutName');
-//if($isNotMyWorkout==0){  //pra nqs eshte my workout (nuk kthen 1)
-//    
-//    button.setAttribute('disabled','disabled');
-//    button.setAttribute('style','background-color: gray');
-//}
-//p.appendChild(br1);
-//p.appendChild(br2);
-//p.appendChild(button);
-//col2.appendChild(br);
-//col2.appendChild(h4);
-//col2.appendChild(p);
-//
-//row.appendChild(col1);
-//row.appendChild(col2);
-//
-//form.appendChild(row);
-//}
-//
-//window.addEventListener('load',printWorkouts,false);
-</script>";
+            <div class = "row">
+                <div class = "col1">
+                    <img src = <?php echo("$photoURL") ?> >
+                </div>
+                <div class = "col2">
+                    <br>
+                    <h4><?php echo("$workoutName") ?></h4>
+                    <p><?php echo("$description") ?>
+                        <br><br>
+                        <a>
+                            <button class="button" name= <?php echo("$workoutName") ?> <?php if($isMyWorkout==1)echo("style='background-color:gray'; disabled") ?> >Choose workout</button>
+                        </a>
+                    </p>
+                </div>
+            </div>
 
-        }
-
-        ?>
+        <?php } ?>
     </form>
 
 </div>

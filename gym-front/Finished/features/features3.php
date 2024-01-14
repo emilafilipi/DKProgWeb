@@ -1,8 +1,15 @@
 <?php
 
+
+session_start();
+if (!isset($_SESSION["userID"]) && !isset($_SESSION["email"])) {
+    header("location: ../login/login.html");
+    die();
+}
+
 global $conn;
 require_once "../connect.php";
-session_start();
+//session_start();
 $userID = $_SESSION["userID"];
 
 $labelsToCheck = array("steps", "calories", "sleep", "Hydration", "Plank", "Lunges", "Pushups", "Squats", "Froggy_Jumps", "Quad_Strech");
@@ -90,13 +97,13 @@ foreach ($labelsToCheck as $label) {
             <div class="dropdown">
                 <a style="text-decoration:none" href="../index.html#features" class="features-btn">Features &#709</a>
                 <div class="dropdown-content">
-                    <a style="text-decoration:none" href="features1.html">General Tips</a>
-                    <a style="text-decoration:none" href="features2.html">Choose Workout</a>
+                    <a style="text-decoration:none" href="features1.php">General Tips</a>
+                    <a style="text-decoration:none" href="features2.php">Choose Workout</a>
                     <a style="text-decoration:none" href="features3.php">View Progress</a>
                 </div>
             </div>
 
-            <div class="navbar"><a style="text-decoration:none" href="MyWorkouts.php" class="myWorkouts">My workouts</a></div>
+            <div class="navbar"><a style="text-decoration:none" href="./MyWorkouts.php" class="about">My workouts</a></div>
 
             <div class="navbar"><a style="text-decoration:none" href="../about/about.html" class="about">About</a></div>
             <div class="navbar"><a style="text-decoration:none" href="../contact/contact.php" class="contact">Contact</a></div>

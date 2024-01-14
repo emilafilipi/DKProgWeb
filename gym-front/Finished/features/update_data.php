@@ -61,7 +61,7 @@ if (isset($_POST['action']) && $_POST['action'] == "data") {
 //    date_default_timezone_set("Europe/London");
 //    $currentDate = date('Y-m-d');
 
-            if (date_diff(new DateTime($currentDate), new DateTime($date))->format("%a") > 7) {
+            if (date_diff(new DateTime($currentDate), new DateTime($date) )->format("%a") > 7) {
                 $query_insert = "INSERT INTO `users`.`weeks` (date) VALUES ('$currentDate')";
                 $result_insert = mysqli_query($conn, $query_insert);
 

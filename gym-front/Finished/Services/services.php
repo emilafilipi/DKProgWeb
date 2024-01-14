@@ -87,7 +87,7 @@
                 </div>
                 
                 <div class="navright">
-                    <div class=navbar><a style="text-decoration:none" href="../login/logout.php" class="signup">Sign out</a></div>
+                    <div class=navbar><a style="text-decoration:none" href="../login/logout.php" class="signup">Log out</a></div>
                 </div>
             </div>
         </div>

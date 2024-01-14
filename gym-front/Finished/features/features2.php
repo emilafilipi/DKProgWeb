@@ -115,7 +115,7 @@ while($row_data = mysqli_fetch_assoc($result_check)){
         </div>
 
         <div class="navright">
-            <div class=navbar><a style="text-decoration:none" href="../login/logout.php" class="signup">Sign out</a></div>
+            <div class=navbar><a style="text-decoration:none" href="../login/logout.php" class="signup">Log out</a></div>
         </div>
     </div>
 </div>
@@ -160,7 +160,7 @@ while($row_data = mysqli_fetch_assoc($result_check)){
                     <p><?php echo("$description") ?>
                         <br><br>
                         <a>
-                            <button class="button" name= <?php echo("$workoutName") ?> <?php if($isMyWorkout==1)echo("style='background-color:gray'; disabled") ?> >Choose workout</button>
+                            <button class="button" name= <?php echo("$workoutName") ?> <?php if($isMyWorkout==1)echo('disabled style="background-color:gray; cursor: not-allowed";') ?> >Choose workout</button>
                         </a>
                     </p>
                 </div>

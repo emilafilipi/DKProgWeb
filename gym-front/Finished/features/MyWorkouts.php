@@ -97,14 +97,13 @@ $result_check = mysqli_query($conn,$query_delete);
                 </div>
             </div>
 
-            <div class="navbar"><a style="text-decoration:none" href="MyWorkouts.php" class="about">My Workouts</a></div>
+            <div class="navbar"><a style="text-decoration:none" href="MyWorkouts.php" class="myWorkouts">My Workouts</a></div>
             <div class="navbar"><a style="text-decoration:none" href="../about/about.html" class="about">About</a></div>
             <div class="navbar"><a style="text-decoration:none" href="../contact/contact.php" class="contact">Contact</a></div>
         </div>
 
         <div class="navright">
-            <div class="login"><a style="text-decoration:none" href="../login/login.html" class ="login">Login</a></div>
-            <div class=navbar><a style="text-decoration:none" href="../login/signup.html" class="signup">Sign up</a></div>
+            <div class=navbar><a style="text-decoration:none" href="../login/logout.php" class="signup">Log out</a></div>
         </div>
     </div>
 </div>

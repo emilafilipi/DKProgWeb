@@ -51,7 +51,7 @@ if(!isset($_SESSION["userID"]) && !isset($_SESSION["email"])){
             </div>
 
             <div class="navright">
-                <div class=navbar><a style="text-decoration:none" href="../login/logout.php" class="signup">Sign out</a></div>
+                <div class=navbar><a style="text-decoration:none" href="../login/logout.php" class="signup">Log out</a></div>
             </div>
         </div>
     </div>
@@ -231,8 +231,9 @@ if(!isset($_SESSION["userID"]) && !isset($_SESSION["email"])){
 </body>
 <script>
 
+
     document.getElementById("show1").addEventListener("click",showWeeklyChart,false);
-    document.getElementById("show2").addEventListener("click",showWeeklyChart,false);
+    document.getElementById("show2").addEventListener("click",showTotalProgres,false);
 
     $(document).ready(function () {
         $("#data").submit(function (e) {
@@ -259,7 +260,6 @@ if(!isset($_SESSION["userID"]) && !isset($_SESSION["email"])){
             $.ajax({
                 type: "POST",
                 url: "update_data.php",
-                // dataType: 'json',
                 async: false,
                 cache: false,
                 processData: false,
@@ -268,7 +268,7 @@ if(!isset($_SESSION["userID"]) && !isset($_SESSION["email"])){
                 success: function (response, status, call) {
                     response = JSON.parse(response);
 
-                    if (call.status == 201) {   //ishte 200
+                    if (call.status == 201) {
                         uncheck(elements);
                         window.location.href = "./chart.php";
                     } else{
@@ -291,7 +291,7 @@ if(!isset($_SESSION["userID"]) && !isset($_SESSION["email"])){
         }
 
         function formatDate(date) {
-            var d = new Date(date),
+            d = new Date(date),
                 month = '' + (d.getMonth() + 1),
                 day = '' + d.getDate(),
                 year = d.getFullYear();

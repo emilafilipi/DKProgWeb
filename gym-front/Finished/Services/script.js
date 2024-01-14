@@ -57,9 +57,6 @@ function submitForm(id, signedUp) {
      // Allow the form to be submitted
 }
 
-function makeGrey(id){
-    document.getElementById(id).style.color = "808080";
-    document.getElementById(id).disabled = 'true';
-}
+
 
 

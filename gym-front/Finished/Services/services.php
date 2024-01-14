@@ -114,11 +114,11 @@
                             <form action="services.php" method="post" onsubmit="return submitForm('submitStrength',
                             <?php echo $signed_up_strength ? 'true' : 'false'; ?>);">
                                 <button type="submit" name="submitStrength" id="submitStrength" class="button signupButton"
-                                    <?php echo isset($_POST["submitStrength"]) || $signed_up_strength ? 'style="display: none;"; ' : '';?>>Sign up
+                                    <?php echo isset($_POST["submitStrength"]) || $signed_up_strength ? 'style="display: none;"; ' : 'style="display: block;";';?>>Sign up
                                 </button>
                                 <button type="submit" name="submittedStrength" id="submittedStrength" class="button submittedButton"
                                     <?php echo isset($_POST["submitStrength"]) || $signed_up_strength ? 'disabled style="display: block; cursor: not-allowed; 
-                                    background-color: #808080;"; ' : '';?>>Already registered
+                                    background-color: #808080;"; ' : 'style="display: none;";';?>>Already registered
                                 </button>
                             </form>
                         </div>
@@ -204,7 +204,6 @@
                                     <?php echo isset($_POST["submitCardio"]) || $signed_up_cardio ? 'disabled style="display: block; cursor: not-allowed; 
                                     background-color: #808080;"; ' : '';?>>Already registered
                                 </button>
-
                             </form>
                         </div>
                     </div>

@@ -616,6 +616,10 @@ footer {
     display: none;
 }
 
+.page .dropOutButton{
+    display: none;
+}
+
 .button:hover{
     background-color:darkgray;
     cursor: pointer;

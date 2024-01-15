@@ -110,7 +110,31 @@ $result_check = mysqli_query($conn,$query_delete);
     </div>
 </div>
 <div class="container">
-    <h1>My Workouts</h1>
+    <h1>My Workouts </h1>
+
+
+    <div class="help">
+        <div class="question">?</div>
+
+        <div class="popup">
+            <h3>11 Workout Tips to Make Your Exercises More Effective</h3>
+            <ul>
+                <li>1.Take a moment to just breathe.</li>
+                <li>2.Hype yourself up.</li>
+                <li>3.Put on pump-up music.</li>
+                <li>4.Eliminate distractions.</li>
+                <li>5.Have a clear plan.</li>
+                <li>6.Be flexible.</li>
+                <li>7.Start your workout with foam rolling.</li>
+                <li>8.Literally tap the muscles you’re using.</li>
+                <li>9.Make sure you’re not too hungry.</li>
+                <li>10.Keep things simple.</li>
+                <li>11.Know that not every workout needs to leave you exhausted. </li>
+            </ul>
+        </div>
+
+    </div>
+
 
     <form method="post" action="MyWorkouts.php" >
 
@@ -168,6 +192,7 @@ $result_check = mysqli_query($conn,$query_delete);
     </form>
 </div>
 
+
 <div class="footer">
     <footer>
         <div class="copyright">
@@ -180,5 +205,5 @@ $result_check = mysqli_query($conn,$query_delete);
     </footer>
 </div>
 </body>
-</body>
+
 </html>

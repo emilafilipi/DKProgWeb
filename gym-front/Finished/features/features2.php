@@ -164,7 +164,14 @@ while($row_data = mysqli_fetch_assoc($result_check)){
 
         <?php } ?>
     </form>
+
 </div>
+
+
+<a href="MyWorkouts.php" style="text-decoration: none">
+    <button id="lastButton">My Workouts</button>
+</a>
+
 
 <div class="footer">
     <footer>

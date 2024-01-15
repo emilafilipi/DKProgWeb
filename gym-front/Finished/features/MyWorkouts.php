@@ -33,45 +33,47 @@ if(!isset($_SESSION["userID"]) && !isset($_SESSION["email"])){
 <body>
 
 <?php
-
-$workout="";
-//if($_SERVER["REQUEST_METHOD"] == "POST"){
-if(isset($_POST['Strength'])){
-//    echo "<h1>jemi ok</h1>";
-    $workout = "Strength";
-
-}else if(isset($_POST['Cardio'])){
-//    echo "<h1>jemi prp ok</h1>";
-    $workout = "Cardio";
-
-}else if(isset($_POST['LISS'])){
-//    echo "<h1>jemi ok</h1>";
-    $workout = "LISS";
-
-}else if(isset($_POST['HIIT'])){
-//    echo "<h1>jemi ok</h1>";
-    $workout = "HIIT";
-}else if(isset($_POST['Group'])){
-//        echo "<h1>jemi ok</h1>";
-    $workout = "Group";
-}else if(isset($_POST['Flexibility/mobility'])){
-//        echo "<h1>jemi ok</h1>";
-    $workout = "Flexibility/mobility";
-
-}else if(isset($_POST['Balance'])){
-//        echo "<h1>jemi ok</h1>";
-    $workout = "Balance";
-
-}else if(isset($_POST['Stability'])){
-//        echo "<h1>jemi ok</h1>";
-    $workout = "Stability";
-}
-//}
-
 $userID = $_SESSION["userID"];
 //$userID = "1";
 global $conn;
 require_once "../connect.php";
+
+$workout="";
+//if($_SERVER["REQUEST_METHOD"] == "POST"){
+if(isset($_POST['Strength'])){
+
+    $workout = "Strength";
+
+}else if(isset($_POST['Cardio'])){
+
+    $workout = "Cardio";
+
+}else if(isset($_POST['LISS'])){
+
+    $workout = "LISS";
+
+}else if(isset($_POST['HIIT'])){
+
+    $workout = "HIIT";
+
+}else if(isset($_POST['Group'])){
+
+    $workout = "Group";
+
+}else if(isset($_POST['Flexibility/mobility'])){
+
+    $workout = "Flexibility/mobility";
+
+}else if(isset($_POST['Balance'])){
+
+    $workout = "Balance";
+
+}else if(isset($_POST['Stability'])){
+
+    $workout = "Stability";
+}
+//}
+
 
 $query_delete = "delete from usersworkouts where userID='".$userID."' and workout='".$workout."'";
 $result_check = mysqli_query($conn,$query_delete);
@@ -110,9 +112,10 @@ $result_check = mysqli_query($conn,$query_delete);
 <div class="container">
     <h1>My Workouts</h1>
 
-    <form method="post" action="#" id="workouts">
+    <form method="post" action="MyWorkouts.php" >
 
         <?php
+
         $query_check = "select workout from usersworkouts where userID = '".$userID."'";
         $result_check = mysqli_query($conn, $query_check);
 
@@ -131,6 +134,7 @@ $result_check = mysqli_query($conn,$query_delete);
 
             $links = $next_row_data['links'];
             $array_links = explode(",","$links");
+
             ?>
 
             <div class = "row">
@@ -159,7 +163,7 @@ $result_check = mysqli_query($conn,$query_delete);
                 </div>
             </div>
 
-        <?php  }  ?>
+        <?php } ?>
 
     </form>
 </div>

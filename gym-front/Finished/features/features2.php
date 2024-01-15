@@ -32,50 +32,49 @@ if(!isset($_SESSION["userID"]) && !isset($_SESSION["email"])){
 <body>
 
 <?php
-
-$workout="";
-//if($_SERVER["REQUEST_METHOD"] == "POST"){
-if(isset($_POST['Strength'])){
-//    echo "<h1>jemi ok</h1>";
-    $workout = "Strength";
-
-}else if(isset($_POST['Cardio'])){
-//    echo "<h1>jemi prp ok</h1>";
-    $workout = "Cardio";
-
-}else if(isset($_POST['LISS'])){
-//    echo "<h1>jemi ok</h1>";
-    $workout = "LISS";
-
-}else if(isset($_POST['HIIT'])){
-//    echo "<h1>jemi ok</h1>";
-    $workout = "HIIT";
-}else if(isset($_POST['Group'])){
-//        echo "<h1>jemi ok</h1>";
-    $workout = "Group";
-}else if(isset($_POST['Flexibility/mobility'])){
-//        echo "<h1>jemi ok</h1>";
-    $workout = "Flexibility/mobility";
-
-}else if(isset($_POST['Balance'])){
-//        echo "<h1>jemi ok</h1>";
-    $workout = "Balance";
-
-}else if(isset($_POST['Stability'])){
-//        echo "<h1>jemi ok</h1>";
-    $workout = "Stability";
-}
-//}
-
-
 $userID = $_SESSION["userID"];
 //$userID = "1";
 global $conn;
 require_once "../connect.php";
 
+$workout="";
+//if($_SERVER["REQUEST_METHOD"] == "POST"){
+if(isset($_POST['Strength'])){
+
+    $workout = "Strength";
+
+}else if(isset($_POST['Cardio'])){
+
+    $workout = "Cardio";
+
+}else if(isset($_POST['LISS'])){
+
+    $workout = "LISS";
+
+}else if(isset($_POST['HIIT'])){
+
+    $workout = "HIIT";
+}else if(isset($_POST['Group'])){
+
+    $workout = "Group";
+}else if(isset($_POST['Flexibility/mobility'])){
+
+    $workout = "Flexibility/mobility";
+
+}else if(isset($_POST['Balance'])){
+
+    $workout = "Balance";
+
+}else if(isset($_POST['Stability'])){
+
+    $workout = "Stability";
+}
+//}
+
+
 if($workout!=""){
     $query_insert = "insert into usersworkouts(userID, workout) values('".$userID."','".$workout."')";
-    $result_check = mysqli_query($conn, $query_insert);    $query_insert = "insert into usersworkouts(userID, workout) values('".$userID."','".$workout."')";
+    $result_check = mysqli_query($conn, $query_insert);
 }
 
 $query_check = "select * from usersworkouts where userID = '".$userID."'";
@@ -85,9 +84,7 @@ $i=0;
 while($row_data = mysqli_fetch_assoc($result_check)){
     $MyWorkouts[$i++] = $row_data["workout"];
 
-}
-
-?>
+}?>
 
 
 <div class="header" id="header">
@@ -124,12 +121,12 @@ while($row_data = mysqli_fetch_assoc($result_check)){
     <h1>Choose Workout</h1>
     <h2>Every workout session is provided by a highly skilled and experienced instructor. Choose the workout that fits you best.</h2>
 
-    <form method="post" action="features2.php" id="workouts">
+    <form method="post" action="features2.php" >
 
         <?php
-        function isMyWorkout($array,$myName){
+        function isMyWorkout($array,$workout){
             foreach($array as $name){
-                if($name == $myName){
+                if($name == $workout){
                     return 1;
                 }
             }
@@ -145,7 +142,6 @@ while($row_data = mysqli_fetch_assoc($result_check)){
             $workoutName = $row_data["workout"];
             $photoURL = $row_data["photo"];
             $description = $row_data["description"];
-
             $isMyWorkout = isMyWorkout($MyWorkouts,$workoutName);
 
             ?>
@@ -160,7 +156,7 @@ while($row_data = mysqli_fetch_assoc($result_check)){
                     <p><?php echo("$description") ?>
                         <br><br>
                         <a>
-                            <button class="button" name= <?php echo("$workoutName") ?> <?php if($isMyWorkout==1)echo('disabled style="background-color:gray; cursor: not-allowed";') ?> >Choose workout</button>
+                            <button class="button" name= <?php echo("$workoutName") ?> <?php if($isMyWorkout==1)echo("style='background-color:gray'; disabled") ?> >Choose workout</button>
                         </a>
                     </p>
                 </div>
@@ -168,7 +164,6 @@ while($row_data = mysqli_fetch_assoc($result_check)){
 
         <?php } ?>
     </form>
-
 </div>
 
 <div class="footer">

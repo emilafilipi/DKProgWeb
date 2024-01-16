@@ -196,7 +196,7 @@ $result_check = mysqli_query($conn,$query_delete);
 <div class="footer">
     <footer>
         <div class="copyright">
-            <span class="left">Copyright &copy; Polytechinc University of Tirana 2023. All rights reserved.</span>
+            <span class="left">Copyright &copy; Polytechinc University of Tirana 2024. All rights reserved.</span>
             <span class="right">
                 <a href="#">Terms &amp; Conditions</a>
                 <a href="#">   Privacy Policy</a>

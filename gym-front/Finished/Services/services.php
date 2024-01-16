@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION["userID"]) && !isset($_SESSION["email"])){
+    header("location: ../login/login.html");
+    die();
+}
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +22,6 @@
     global $conn;
     require_once "../connect.php";
 
-    session_start();
     $userID = $_SESSION["userID"];
 
     $strength = 'Muscle Surrender';
@@ -69,7 +76,7 @@
                             <div class="gym"><a style="text-decoration:none" href="../index.html" class="home">GYM</a></div>
                         </div>
                     <div class="navbar"><a style="text-decoration:none" href="../index.html" class="home">Home</a></div>
-                    <div class="navbar"><a style="text-decoration:none" href="services.html" class="services">Services</a></div>
+                    <div class="navbar"><a style="text-decoration:none" href="services.php" class="services">Services</a></div>
     
                     <div class="dropdown">
                         <a style="text-decoration:none" href="../index.html#features" class="features-btn">Features &#709</a>

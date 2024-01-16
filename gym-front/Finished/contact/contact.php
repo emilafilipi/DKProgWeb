@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(!isset($_SESSION["userID"]) && !isset($_SESSION["email"])){
+    header("location: ../login/login.html");
+    die();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +21,6 @@
 global $conn;
 require_once "../connect.php";
 
-session_start();
 $userID = $_SESSION["userID"];
 
 if (!empty($_POST)) {
